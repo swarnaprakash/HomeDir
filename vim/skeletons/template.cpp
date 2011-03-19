@@ -1,0 +1,46 @@
+// Author: Swarnaprakash
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <queue>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <cctype>
+#include <cassert>
+
+using namespace std;
+
+const bool debug=true;
+
+#define SET(x,v)	memset(x,v,sizeof(x))
+#define ALL(x) 		(x).begin() , (x).end()
+#define PB 			push_back
+#define SZ(x)		((int)((x).size()))
+#define TR(i,x) 	for(int i=0;i<(x).size();++i)
+#define DB(x) 		if(debug) cout << #x << " : " << x <<endl;
+#define INF			0x3f3f3f3f
+#define M			105
+
+typedef long long LL;
+typedef vector<int> VI;
+typedef vector<string> VS;
+typedef vector<VI> VVI;
+typedef pair<int,int> PII;
+typedef pair<int,PII> PIII;
+
+int main() {
+	return 0;
+}
