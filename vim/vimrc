@@ -44,14 +44,18 @@ autocmd BufNewFile *.cpp 0r ~/.vim/skeletons/template.cpp
 autocmd BufNewFile *.java 0r ~/.vim/skeletons/template.java
 autocmd BufNewFile *.c 0r ~/.vim/skeletons/template.c
 
-autocmd FileType c set noexpandtab shiftwidth=4 tabstop=4 formatoptions+=ro makeprg=gcc\ -lm\ -W\ -Wall\ -Wextra\ -O2
-autocmd FileType cpp set noexpandtab shiftwidth=4 tabstop=4 makeprg=g++\ -W\ -Wall\ -Wextra\ -O2
-autocmd FileType java set noexpandtab shiftwidth=4 tabstop=4 makeprg=javac
+autocmd FileType c set noexpandtab shiftwidth=4 tabstop=4 formatoptions+=ro makeprg=gcc\ -lm\ -W\ -Wall\ -Wextra\ -O2\ %
+autocmd FileType cpp set noexpandtab shiftwidth=4 tabstop=4 makeprg=g++\ -W\ -Wall\ -Wextra\ -O2\ %
+autocmd FileType java set noexpandtab shiftwidth=4 tabstop=4 makeprg=javac\ %
 autocmd FileType perl set smartindent
 autocmd FileType css set smartindent
 autocmd FileType html set noci noai nosi
 autocmd FileType make set noexpandtab shiftwidth=8
 autocmd FileType python set shiftwidth=4 tabstop=4 expandtab
-autocmd FileType ruby set shiftwidth=2 tabstop=2 expandtab makeprg=ruby\ -c
+autocmd FileType ruby set shiftwidth=2 tabstop=2 expandtab makeprg=ruby\ -c\ %
 
-
+" for c/cpp compile and run
+noremap <F5> <Esc>:make<Enter>
+noremap <F6> <Esc>:!./a.out<Enter>
+" for contests
+noremap <F7> <Esc>:!g++<Space>-W<Space>-Wall<Space>-Wextra<Space>-O2<Space>%<Space>&&<Space>./a.out<Enter>

@@ -8,6 +8,9 @@
 #include<string.h>
 
 #define M 105
+#define INF 0x3f3f3f3f
+
+typedef long long LL;
 
 int main() {
 	return 0;

@@ -23,16 +23,14 @@
 
 using namespace std;
 
+const int M = 105;
+const int INF = 0x3f3f3f3f;
 const bool debug=true;
 
 #define SET(x,v)	memset(x,v,sizeof(x))
 #define ALL(x) 		(x).begin() , (x).end()
-#define PB 			push_back
 #define SZ(x)		((int)((x).size()))
-#define TR(i,x) 	for(int i=0;i<(x).size();++i)
 #define DB(x) 		if(debug) cout << #x << " : " << x <<endl;
-#define INF			0x3f3f3f3f
-#define M			105
 
 typedef long long LL;
 typedef vector<int> VI;
