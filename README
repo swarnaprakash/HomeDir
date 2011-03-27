@@ -1,2 +1,4 @@
-My first repo in git
-This to store all configuration files that I use: .zshrc, .vimrc
+Repo to store init_files
+ - configuation files .vimrc .zshrc
+ - adhoc scripts
+ - scripts to setup init_files
