@@ -1,17 +1,33 @@
-# Lines configured by zsh-newuser-install
+export EDITOR=vim
+# emacs editing mode
+bindkey -e 
+
+######################################## misc options {{{
+
+# type '<dir>' instead of 'cd <dir>'
+setopt autocd
+
+# http://zsh.sourceforge.net/Intro/intro_2.html#SEC2
+setopt extendedglob 
+
+setopt nobeep
+########################################}}}
+
+##### history {{{
+
+# Name of the file in which history is stored
 HISTFILE=~/.zsh_histfile
 HISTSIZE=100000
 SAVEHIST=100000
 
-export EDITOR=vim
+# prevent history from recording duplicated entries
+setopt hist_ignore_all_dups 
+
+# Prevent entries from being recorded into a history by preceding them with at least one space. 
+setopt hist_ignore_space 
 
 setopt appendhistory
-setopt autocd # No need 'cd'. /etc instead of cd /etc
-setopt extendedglob # http://zsh.sourceforge.net/Intro/intro_2.html#SEC2
-setopt nobeep
-
-setopt hist_ignore_all_dups # prevent history from recording duplicated entries
-setopt hist_ignore_space # useful trick to prevent particular entries from being recorded into a history by preceding them with at least one space. 
+#####}}}
 
 # Directory history. http://zsh.sourceforge.net/Intro/intro_6.html
 # cd -3
@@ -23,7 +39,6 @@ setopt pushdminus # swapped the meaning of cd +1 and cd -1
 setopt pushdsilent # keeps the shell from printing the directory stack each time we do a cd
 setopt pushdtohome
 
-bindkey -e # emacs editing mode
 
 zstyle :compinstall filename '/home/prakash/.zshrc'
 
@@ -37,7 +52,7 @@ compinit
 export PS1="[%B%* %n@%M %d%b]%(?.. (%?%))
 $"
 
-#command aliases
+#command aliases {{{
 alias ls='ls --classify --color=auto'
 alias ll='ls -l'
 alias cp='cp -i'
@@ -46,3 +61,4 @@ alias grep='grep --color=auto'
 
 alias gcc='gcc -lm -W -Wall -Wextra -O2'
 alias g++='g++ -W -Wall -Wextra -O2'
+#}}}
