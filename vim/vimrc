@@ -1,3 +1,19 @@
+set nocompatible
+"Setup vundle - a vim plugin management tool
+
+filetype off  " required!
+set rtp+=~/.vim/vundle.git/ 
+set rtp+=/home/prakash/workplace/init_files/vim/skeletons
+call vundle#rc()
+"My Plugins
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-rails'
+
+colorscheme default
+filetype plugin on
+filetype indent on
+syntax on
+
 set autoindent
 set backspace=2
 set cindent shiftwidth=4
@@ -11,7 +27,6 @@ set incsearch
 set laststatus=2
 set linebreak
 set matchtime=5
-set nocompatible
 set notimeout
 set nottimeout
 set ruler
@@ -35,15 +50,6 @@ set shiftround
 set ffs=unix,dos,mac
 set whichwrap=h,l,~,[,]
   
-colorscheme default
-filetype plugin on
-filetype indent on
-syntax on
-
-autocmd BufNewFile *.cpp 0r ~/.vim/skeletons/template.cpp
-autocmd BufNewFile *.java 0r ~/.vim/skeletons/template.java
-autocmd BufNewFile *.c 0r ~/.vim/skeletons/template.c
-
 autocmd FileType c set noexpandtab shiftwidth=4 tabstop=4 formatoptions+=ro makeprg=gcc\ -lm\ -W\ -Wall\ -Wextra\ -O2\ %
 autocmd FileType cpp set noexpandtab shiftwidth=4 tabstop=4 makeprg=g++\ -W\ -Wall\ -Wextra\ -O2\ %
 autocmd FileType java set noexpandtab shiftwidth=4 tabstop=4 makeprg=javac\ %
