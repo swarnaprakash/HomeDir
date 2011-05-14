@@ -2,3 +2,14 @@ Repo to store init_files
  - configuation files .vimrc .zshrc
  - adhoc scripts
  - scripts to setup init_files
+
+INSTALLATION:
+
+sh <(wget --no-check-certificate 'https://github.com/swarnaprakash/init_files/raw/master/install.sh' -o /dev/null -O -)
+
+Note that the script is not piped to sh as the script tries to open vim (and close it automatically) 
+to install vim plugins using Vundle plugin.
+
+
+CREDITS:
+Lifted from various sources!
