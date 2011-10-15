@@ -6,10 +6,21 @@ SCRIPT_DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 
 echo "Copying files to home"
 for i in $(ls -A $SCRIPT_DIR/home); do
-    cp -R $SCRIPT_DIR/home/$i $HOME
+    cp -Rf $SCRIPT_DIR/home/$i $HOME
 done
 
-echo "Installing VIM Plugins"
+vim_dir="$HOME/.vim"
+mkdir -p "$vim_dir"
+
+#vimrc expects vundle dir in this location
+vundle_dir="$vim_dir/vundle"
+if [ -d "$vundle_dir" ]; then
+    echo "Directory "$vundle_dir" exists; Removing it"
+    rm -rf "$vundle_dir"
+fi
+
+echo "Cloning Gtihub repo gmarik/vundle into $vundle_dir"
+git clone http://github.com/gmarik/vundle.git "$vundle_dir"
 #Open Vim, run BundleInstall! (new plugin/update plugin), 
 #run BundleClean (remove deleted plugin), then quit (via q).
-vim +BundleInstall! +BundleClean +q /dev/zero
+vim +BundleInstall! +BundleClean +q!
