@@ -2,7 +2,7 @@
 
 set nocompatible  " required!
 filetype off  " required!
-set runtimepath+=~/.vim/vundle.git/ 
+set runtimepath+=~/.vim/vundle/ 
 call vundle#rc()
 "My Plugins
 Bundle 'ervandew/supertab'
@@ -59,6 +59,8 @@ autocmd FileType html set noci noai nosi
 autocmd FileType make set noexpandtab shiftwidth=8
 autocmd FileType python set shiftwidth=4 tabstop=4 expandtab
 autocmd FileType ruby set shiftwidth=2 tabstop=2 expandtab makeprg=ruby\ -c\ %
+
+autocmd! BufNewFile * silent! 0r $HOME/.vim/skeletons/template.%:e
 
 " for c/cpp compile and run
 noremap <F5> <Esc>:make<Enter>

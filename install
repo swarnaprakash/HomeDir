@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+SCRIPT_DIR="$( cd -P "$( dirname "$0" )" && pwd )"
+
+echo "Copying files to home"
+cp -R $SCRIPT_DIR/home/* $HOME
+
+echo "Installing VIM Plugins"
+#Open Vim, run BundleInstall! (new plugin/update plugin), 
+#run BundleClean (remove deleted plugin), then quit (via q).
+vim +BundleInstall! +BundleClean +q /dev/zero
