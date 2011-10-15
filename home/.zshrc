@@ -118,3 +118,7 @@ ihighlight() {
 middle () {
   sed -n -e $1','$2'p;'$2'q' $3
 }
+
+uri_encode() {
+    ruby -e "require 'cgi'; puts CGI.escape('$1');"
+}
