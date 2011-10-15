@@ -32,6 +32,8 @@ setopt pushdminus # swap cd +1 and cd -1
 setopt pushdsilent 
 setopt pushdtohome
 
+setopt prompt_subst
+
 #watch for logins
 watch=(notme root)
 
@@ -69,15 +71,15 @@ autoload -Uz colors
 colors
 
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:*' stagedstr '%F{28}+'
+zstyle ':vcs_info:*' unstagedstr '%F{11}*'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats " [%b|%a%u%c]"
+zstyle ':vcs_info:*' formats  " [%b%u%c]"
 zstyle ':vcs_info:*' enable git
 
-vcs_info_wrapper() {
-  vcs_info
-  if [ -n "$vcs_info_msg_0_" ]; then
-    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-  fi
+precmd () {
+    vcs_info
 }
 
 # Escape URL while pasting/typing in terminal
@@ -87,9 +89,8 @@ if autoload +X url-quote-magic 2> /dev/null; then
     zle -N self-insert url-quote-magic
 fi
 
-export PS1="[%B%* %n@%M %d%b]%(?.. (%?%))
-$"
-RPROMPT=$'$(vcs_info_wrapper)'
+export PS1='[%B%* %n@%M %d%b]%{$fg[yellow]%}${vcs_info_msg_0_}%{$fg[red]%}%(?.. (%?%))%{$reset_color%}
+$'
 
 #command aliases {{{
 alias ls='ls --classify --color=auto'
