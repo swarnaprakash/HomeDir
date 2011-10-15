@@ -1,15 +1,12 @@
-Repo to store init_files
- - configuation files .vimrc .zshrc
- - adhoc scripts
- - scripts to setup init_files
+Repo to store dotfiles and scripts (or whatever) in home dir (Ex: vimrc, zshrc)
 
 INSTALLATION:
+git clone git@github.com:swarnaprakash/HomeDir.git && HomeDir/install
 
-sh <(wget --no-check-certificate 'https://github.com/swarnaprakash/init_files/raw/master/install.sh' -o /dev/null -O -)
-
-Note that the script is not piped to sh as the script tries to open vim (and close it automatically) 
-to install vim plugins using Vundle plugin.
-
+WHAT INSTALL DOES:
+Copies all files (recursively) in HomeDir/home to $HOME
+Installs vim plugins using vundle (assumming the vundle path and list
+        of plugins are configured properly in vimrc)
 
 CREDITS:
 Lifted from various sources!
