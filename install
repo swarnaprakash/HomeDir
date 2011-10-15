@@ -5,7 +5,9 @@ set -e
 SCRIPT_DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 
 echo "Copying files to home"
-cp -R $SCRIPT_DIR/home/* $HOME
+for i in $(ls -A $SCRIPT_DIR/home); do
+    cp -R $SCRIPT_DIR/home/$i $HOME
+done
 
 echo "Installing VIM Plugins"
 #Open Vim, run BundleInstall! (new plugin/update plugin), 
