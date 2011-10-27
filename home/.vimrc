@@ -1,12 +1,13 @@
 "Setup vundle - a vim plugin management tool
-
-set nocompatible  " required!
-filetype off  " required!
+" {{{
+set nocompatible  " required for Vundle
+filetype off  " required for Vundle
 set runtimepath+=~/.vim/vundle/ 
 call vundle#rc()
 "My Plugins
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-rails'
+" }}}
 
 colorscheme default
 filetype plugin on
@@ -14,51 +15,68 @@ filetype indent on
 syntax on
 
 set nocompatible
-set autoindent
-set backspace=2
-set cindent shiftwidth=4
-set diffopt=filler
-set expandtab
-set guioptions-=m
-set guioptions-=T
-set nohidden
-set history=50
-set incsearch
-set laststatus=2
-set linebreak
-set matchtime=5
-set notimeout
-set nottimeout
-set ruler
-set scrolloff=1
-set shiftwidth=4
-set showcmd
-set showmatch
-set softtabstop=4
-set virtualedit=block
-set wildmenu
-set listchars=tab:>-,trail:-
+
+set autoindent " Copy indent from current line when starting a new line 
+set backspace=indent,eol,start " make backspace a more flexible
+"             |      |   |
+"	      |      |   |+-- allow backspacing over autoindent
+"             |      |+-- allow backspacing over line breaks (join lines)
+"             |+-- allow backspacing over the start of insert; CTRL-W and CTRL-U stop once at the start of insert.
+
+set expandtab " expand tabs to spaces.
+set smarttab " <Tab> acts based on 'shiftwidth' instead of 'tabstop'
+set shiftwidth=4 " 4 char tab
+set softtabstop=4 " when hitting tab or backspace, how many spaces should a tab be
+set shiftround " Round indent to multiple of 'shiftwidth'.  Applies to > and <	commands
+
+set notimeout " do not timeout on key codes
+set nottimeout " do not timeout on :mappings
+
+set laststatus=2 " always show the status line
+set ruler " Show the line and column number of the cursor position, separated by a
+	  " comma.  When there is room, the relative position of the displayed
+	  " text in the file is shown on the far right:
+set showcmd " Show (partial) command in the last line of the screen
+set showmode " If in Insert, Replace or Visual mode put a message on the last line.
+
+set showmatch " show matching brackets
+set matchtime=5 " how many tenths of a second to blink
+                " matching brackets for
+
+
+set wildmenu " turn on command line completion wild style
 set wildmode=list:longest,full
-set helpfile=$VIMRUNTIME/doc/help.txt
-set path+=.,..,../..,../../..,../../../..,/usr/include
-set mouse=a
-set hlsearch
-set showmode
-set modeline
-set nowrap
-set shiftround
-set ffs=unix,dos,mac
-set whichwrap=h,l,~,[,]
+"            |            |
+"            |            |+-- Complete the next full match. After the last match the original 
+"            |                 string is used and then the first match again.
+"            |+-- When more than one match, list all matches and complete till longest common string.
+
+set incsearch " hightlight as you type the search phrase
+set ignorecase " case insensitive search
+set smartcase " if there are caps, go case-sensitive
+set hlsearch " " highlight all matches
+
+set nowrap " do not wrap line
+set whichwrap=h,l,~,[,] " Allow specified keys that move the cursor left/right to move to the
+"                         previous/next line when the cursor is on the first/last character
+set linebreak " on wrap mode break at a character in 'breakat' rather
+	      " than at the last character that fits on the screen
   
-autocmd FileType c set noexpandtab shiftwidth=4 tabstop=4 formatoptions+=ro makeprg=gcc\ -lm\ -W\ -Wall\ -Wextra\ -O2\ %
-autocmd FileType cpp set noexpandtab shiftwidth=4 tabstop=4 makeprg=g++\ -W\ -Wall\ -Wextra\ -O2\ %
-autocmd FileType java set noexpandtab shiftwidth=4 tabstop=4 makeprg=javac\ %
-autocmd FileType perl set smartindent
-autocmd FileType css set smartindent
-autocmd FileType html set noci noai nosi
-autocmd FileType make set noexpandtab shiftwidth=8
-autocmd FileType python set shiftwidth=4 tabstop=4 expandtab
-autocmd FileType ruby set shiftwidth=2 tabstop=2 expandtab makeprg=ruby\ -c\ %
+set scrolloff=4  " Minimal number of screen lines to keep above and below the cursor
+set fileformats=unix,dos,mac " support all three, in this order
+set nohidden " When I close a tab, remove the buffer 
+set history=50 " Number of command to remember
+set nostartofline " leave my cursor where it was when executing some commands
+set virtualedit=block " the cursor can be positioned where there is no actual character
+                      " in visual block mode
+set listchars=tab:>-,trail:- " show tabs and trailing spaces
+set mouse=a " use mouse in all modes
+set noerrorbells " don't make noise
+
+autocmd FileType c setlocal makeprg=gcc\ -lm\ -W\ -Wall\ -Wextra\ -O2\ %
+autocmd FileType cpp setlocal makeprg=g++\ -W\ -Wall\ -Wextra\ -O2\ %
+autocmd FileType java setlocal makeprg=javac\ %
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 makeprg=ruby\ -c\ %
 
 autocmd! BufNewFile * silent! 0r $HOME/.vim/skeletons/template.%:e
 
