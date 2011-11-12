@@ -22,9 +22,11 @@ setopt nohup    # Don't HUP running jobs on logout
 setopt notify # Report the status of background jobs immediately
 setopt promptsubst # expansion performed in prompt
 
-setopt hist_ignore_all_dups #No dups
-setopt hist_ignore_space # Don't record if cmd preceded with space
+setopt append_history # append the new history to the old
 setopt inc_append_history # new history lines are added as soon as they are entered
+setopt hist_ignore_all_dups #No dups
+setopt hist_find_no_dups # even if  theres are duplicates, backward searches won't show them
+setopt hist_ignore_space # Don't record if cmd preceded with space
 setopt banghist # Allow ! for accessing history 
 
 setopt autopushd # cd acts like pushd
