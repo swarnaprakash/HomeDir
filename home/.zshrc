@@ -124,3 +124,9 @@ middle () {
 uri_encode() {
     ruby -e "require 'cgi'; puts CGI.escape('$1');"
 }
+
+# Clojure specific
+export CLOJURE_EXT=~/.clojure
+export PATH=$PATH:~/opt/clojure-contrib/launchers/bash
+alias clj=clj-env-dir
+export PATH=$PATH:~/opt/leiningen
