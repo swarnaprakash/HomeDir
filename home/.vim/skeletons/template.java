@@ -4,6 +4,6 @@ import java.util.regex.*;
 import java.math.*;
 
 public class Main {
-	public static void main(String[] args) {
-	}
+    public static void main(String[] args) {
+    }
 }
