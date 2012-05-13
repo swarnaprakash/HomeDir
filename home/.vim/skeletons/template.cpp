@@ -40,5 +40,5 @@ typedef pair<int,int> PII;
 typedef pair<int,PII> PIII;
 
 int main() {
-	return 0;
+    return 0;
 }
