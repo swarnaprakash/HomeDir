@@ -91,7 +91,7 @@ if autoload +X url-quote-magic 2> /dev/null; then
     zle -N self-insert url-quote-magic
 fi
 
-export PS1='[%B%* %n@%M %d%b]%{$fg[yellow]%}${vcs_info_msg_0_}%{$fg[red]%}%(?.. (%?%))%{$reset_color%}
+export PS1='[%B%* %n@%M %~%b]%{$fg[yellow]%}${vcs_info_msg_0_}%{$fg[red]%}%(?.. (%?%))%{$reset_color%}
 $'
 
 #command aliases {{{
